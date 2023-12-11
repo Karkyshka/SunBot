@@ -40,10 +40,19 @@ def get_sun():
     return bot.send_message(chat_id, message)
 
 
-# Задаем время отправки сообщения
-schedule.every().day.at('08:41').do(get_sun)
+def timer_say():
+    # Задаем время отправки сообщения
+    schedule.every().day.at('17:49').do(get_sun)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
-# Бесконечный цикл для проверки расписания
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+
+def main():
+    # Initializing bot
+    timer_say()
+
+
+if __name__ == "__main__":
+    main()
+
